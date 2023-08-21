@@ -1,0 +1,18 @@
+<h1>{{quizTitle}} Questions</h1>
+
+<mat-card *ngFor="let ques of questions; let i =index" style="margin-bottom: 5px;">
+
+    <mat-card-header>
+        <mat-card-title>
+            Q.{{i+1}} {{ques.content}}
+        </mat-card-title>
+    </mat-card-header><br>
+
+    <mat-card-content>
+        <p><b>(a)</b> {{ques.option1}}</p>
+        <p><b>(b)</b> {{ques.option2}}</p>
+        <p><b>(c)</b> {{ques.option3}}</p>
+        <p><b>(d)</b> {{ques.option4}}</p>
+        <p><b>Correct Answer: </b>{{ques.answer}} </p>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,62 @@
+<mat-card>
+    <h3 style="text-align: center;">Your profile details</h3>
+    <mat-card-content>
+
+        <div class="bootstrap-wrapper">
+
+            <div class="container">
+
+                <div class="container text-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png" alt="" width="200px" height="200px">
+                    <h2 style="margin-top: 20px;">{{user.firstName}} {{user.lastName}}</h2>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-10 offset-md-1">
+
+                        <!--div details-->
+                        <table class="table">
+
+                            <tr>
+                                <td>Username</td>
+                                <td>{{user.username}}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Email</td>
+                                <td>{{user.email}}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Phone</td>
+                                <td>{{user.phone}}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Role</td>
+                                <td>{{user.authorities[0].authority}}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Status</td>
+                                <td>{{user.enabled?"ACTIVE":"INACTIVE"}}</td>
+                            </tr>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </mat-card-content>
+    <mat-card-actions class="text-center">
+        <button mat-raised-button color="primary" style="margin-left: 33%;">UPDATE</button>
+        <button mat-raised-button color="accent" style="margin-left: 20px;">SHARE</button>
+    </mat-card-actions>
+    
+</mat-card>
