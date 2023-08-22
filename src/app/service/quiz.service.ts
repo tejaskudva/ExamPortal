@@ -23,7 +23,7 @@ export class QuizService {
   }
 
   setQuizzes(quizzes){
-    localStorage.setItem('quizzes', quizzes)
+    localStorage.setItem('quizzes', JSON.stringify(quizzes))
   }
 
   addQuiz(quiz: any){

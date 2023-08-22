@@ -1,5 +1,6 @@
 <h1>{{quizTitle}} Questions</h1>
 
+<button [routerLink]="'/admin/add-question/' + quizId" mat-flat-button color="primary" style="margin-bottom: 4px;">Add Question</button>
 <mat-card *ngFor="let ques of questions; let i =index" style="margin-bottom: 5px;">
 
     <mat-card-header>
@@ -13,6 +14,6 @@
         <p><b>(b)</b> {{ques.option2}}</p>
         <p><b>(c)</b> {{ques.option3}}</p>
         <p><b>(d)</b> {{ques.option4}}</p>
-        <p><b>Correct Answer: </b>{{ques.answer}} </p>
+        <p><b>Correct Answer: </b>{{ques.answer}}</p>
     </mat-card-content>
 </mat-card>
