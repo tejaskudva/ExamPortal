@@ -16,4 +16,8 @@
         <p><b>(d)</b> {{ques.option4}}</p>
         <p><b>Correct Answer: </b>{{ques.answer}}</p>
     </mat-card-content>
+    <mat-card-actions>
+        <button mat-flat-button color="accent" [routerLink]="'/admin/update-question/' + ques.questionId">Update</button>
+        <button mat-flat-button color="accent" (click)="deleteQuestion(ques.questionId)" style="margin-left: 5px;">Delete</button>
+    </mat-card-actions>
 </mat-card>

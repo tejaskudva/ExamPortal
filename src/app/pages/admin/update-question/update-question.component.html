@@ -1,10 +1,11 @@
 <mat-card>
-    <h1 class="text-center">Add new Question</h1>
+    <h1 class="text-center">Update Question</h1>
+    {{question|json}}
     <mat-card-content>
         <div class="bootstrap-wrapper">
             <div class="row">
                 <div class="col-md-8 offset-md-2">
-                    <form (ngSubmit)="addQuestion()">
+                    <form (ngSubmit)="updateQuestion()">
                         <mat-form-field style="width: 100%; appearance: outline;">
                             <mat-label>Title</mat-label>
                             <input required type="text" name="content" matInput placeholder="Enter content" [(ngModel)]="question.content">
@@ -36,7 +37,7 @@
                         </mat-form-field>
 
                         <div class="container text-center">
-                            <button type="submit" mat-raised-button color="accent">Add Question</button>
+                            <button type="submit" mat-raised-button color="accent">Update Question</button>
                         </div>
                     </form>
                 </div>

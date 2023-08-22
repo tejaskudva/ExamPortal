@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { QuestionService } from 'src/app/service/question.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-question',
@@ -21,7 +22,6 @@ export class AddQuestionComponent {
     }
   }
 
-  quizzes = []
   public id: string
 
   constructor(private questionservice: QuestionService, private route: ActivatedRoute){}
@@ -29,22 +29,26 @@ export class AddQuestionComponent {
   ngOnInit(): void {
 
     this.id = this.route.snapshot.paramMap.get('id')
-    this.quizzes = JSON.parse(localStorage.getItem('quizzes') || '[]')
-
-    for(let quiz of this.quizzes){
-      if(quiz.qid == this.id){
-        this.question.quiz.qid = quiz.qid
-      }
-    }
+    this.question.quiz.qid=Number(this.id)
   }
 
   addQuestion(){
     this.questionservice.addQuestion(this.question).subscribe(
       (data: any)=>{
-        console.log(data)
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Question added successfully!!'
+        })
       },
       error=>{
         console.log(error)
+
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Some error in adding Question'
+        })
       }
     )
   }

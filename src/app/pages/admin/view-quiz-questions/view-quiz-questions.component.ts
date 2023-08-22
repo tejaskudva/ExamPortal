@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionService } from 'src/app/service/question.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-view-quiz-questions',
@@ -20,7 +21,7 @@ export class ViewQuizQuestionsComponent {
     quiz:{}
   }]
 
-  constructor(private route: ActivatedRoute, private questionservice: QuestionService){}
+  constructor(private route: ActivatedRoute, private questionservice: QuestionService, private router: Router){}
 
   public quizId: string
   public quizTitle: string
@@ -36,7 +37,7 @@ export class ViewQuizQuestionsComponent {
     this.questionservice.getQuestionsByQuiz(qid).subscribe(
       (data: any)=>{
         this.questions = data
-        console.log(this.questions)
+        this.questionservice.setQuestions(this.questions)
       },
       error=>{
         console.log(error)
@@ -44,4 +45,25 @@ export class ViewQuizQuestionsComponent {
     )
   }
 
+  deleteQuestion(id: Number){
+    this.questionservice.deleteQuestion(id).subscribe(
+      (data: any)=>{
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Question deleted successfully!!'
+        })
+      },
+      error=>{
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Error in deleting question'
+        })
+      }
+    )
+
+
+    this.router.navigate(['/admin/view-questions/'+this.quizId+'/'+this.quizTitle])
+  }
 }
