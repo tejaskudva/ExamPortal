@@ -9,6 +9,7 @@ export class QuizService {
   constructor(private http:HttpClient) {}
 
   private getQuizUrl:string="http://localhost:8080/quiz/getQuiz";
+  private getQuizByCategoryUrl:string="http://localhost:8080/quiz/category/";
   private addQuizUrl:string="http://localhost:8080/quiz/";
   private deleteQuizUrl:string="http://localhost:8080/quiz/deleteQuiz/";
   private getQuizByIdUrl:string="http://localhost:8080/quiz/getQuiz/";
@@ -20,6 +21,10 @@ export class QuizService {
 
   getQuizById(qId: any){
     return this.http.get(`${this.getQuizByIdUrl}${qId}`)
+  }
+
+  getQuizByCategory(cid: any){
+    return this.http.get(`${this.getQuizByCategoryUrl}${cid}`)
   }
 
   setQuizzes(quizzes){

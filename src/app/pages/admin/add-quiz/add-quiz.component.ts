@@ -28,6 +28,11 @@ export class AddQuizComponent {
   ngOnInit(): void {
 
     this.categories = JSON.parse(localStorage.getItem('categories') || '[]')
+
+    if(this.categories.length == 0){
+      this.getCategories()
+    }
+
     console.log(this.categories)
 
   }
@@ -63,6 +68,18 @@ export class AddQuizComponent {
           title: 'Error',
           text: 'Some error in adding Quiz'
         })
+      }
+    )
+  }
+
+  getCategories(){
+    this.categoryservice.getCategories().subscribe(
+      (data: any)=>{
+        this.categories = data
+        this.categoryservice.setCategories(data)
+      },
+      error=>{
+        console.log(error)
       }
     )
   }

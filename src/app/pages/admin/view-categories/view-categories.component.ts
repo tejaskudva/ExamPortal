@@ -9,17 +9,15 @@ import { CategoryService } from 'src/app/service/category.service';
 })
 export class ViewCategoriesComponent {
 
-  categories = [
-    {
-      title:'',
-      description: '',
-      cid: 0
-    }
-  ]
+  categories = []
 
   ngOnInit(): void {
 
-    this.getCategories()
+    this.categories = JSON.parse(localStorage.getItem('categories') || '[]')
+
+    if(this.categories.length == 0){
+      this.getCategories()
+    }
 
   }
 

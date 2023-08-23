@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,6 +35,9 @@ import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.compo
 import { ViewQuizQuestionsComponent } from './pages/admin/view-quiz-questions/view-quiz-questions.component';
 import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
 import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
+import { UserSidebarComponent } from './pages/user/user-sidebar/user-sidebar.component';
+import { UserWelcomeComponent } from './pages/user/user-welcome/user-welcome.component';
+import { UserQuizComponent } from './pages/user/user-quiz/user-quiz.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,10 @@ import { UpdateQuestionComponent } from './pages/admin/update-question/update-qu
     UpdateQuizComponent,
     ViewQuizQuestionsComponent,
     AddQuestionComponent,
-    UpdateQuestionComponent
+    UpdateQuestionComponent,
+    UserSidebarComponent,
+    UserWelcomeComponent,
+    UserQuizComponent
   ],
   imports: [
     BrowserModule,

@@ -31,7 +31,11 @@ export class UpdateQuizComponent {
   ngOnInit(): void {
 
     this.categories = JSON.parse(localStorage.getItem('categories') || '[]')
-    console.log(this.categories)
+    this.categories = JSON.parse(localStorage.getItem('categories') || '[]')
+
+    if(this.categories.length == 0){
+      this.getCategories()
+    }
 
     this.id = this.route.snapshot.paramMap.get('qid')
 
@@ -81,6 +85,17 @@ export class UpdateQuizComponent {
           title: 'Error',
           text: 'Some error in updated Quiz'
         })
+      }
+    )
+  }
+
+  getCategories(){
+    this.categoryservice.getCategories().subscribe(
+      (data: any)=>{
+        this.categories = data
+      },
+      error=>{
+        console.log(error)
       }
     )
   }

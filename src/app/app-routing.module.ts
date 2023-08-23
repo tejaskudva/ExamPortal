@@ -18,6 +18,8 @@ import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.compo
 import { ViewQuizQuestionsComponent } from './pages/admin/view-quiz-questions/view-quiz-questions.component';
 import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
 import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
+import { UserWelcomeComponent } from './pages/user/user-welcome/user-welcome.component';
+import { UserQuizComponent } from './pages/user/user-quiz/user-quiz.component';
 
 const routes: Routes = [
   {
@@ -86,8 +88,21 @@ const routes: Routes = [
   {
     path:"user-dashboard",
     component:UserDashboardComponent,
-    pathMatch:"full",
-    canActivate: [NormalGuard]
+    canActivate: [NormalGuard],
+    children:[
+      {
+        path:"",
+        component: UserWelcomeComponent,
+      },
+      {
+        path:"profile",
+        component: ProfileComponent,
+      },
+      {
+        path:"quiz/:cid",
+        component: UserQuizComponent,
+      }
+    ]
   }
 ];
 

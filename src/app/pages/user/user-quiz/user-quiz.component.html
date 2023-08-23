@@ -1,0 +1,28 @@
+<h2 *ngIf="!quizCount">No quizzes are present for the selected category</h2>
+
+<ng-container *ngFor="let q of quizzes" >
+    <mat-card *ngIf="q.active" style="margin-bottom: 10px;">
+        
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>
+                {{q.title}}
+            </mat-card-title>
+        
+            <mat-card-subtitle>
+                {{q.category.title}}
+            </mat-card-subtitle>
+        </mat-card-header>
+    
+        <mat-card-content>
+            <p>{{q.description}}</p>
+        </mat-card-content>
+    
+        <mat-card-actions>
+            <button mat-flat-button color="accent">Questions</button>
+            <button mat-flat-button>Max Marks: {{q.maxMarks}}</button>
+            <button mat-flat-button>Number of Questions: {{q.numberOfQuestions}}</button>
+        </mat-card-actions>   
+
+    </mat-card>
+</ng-container>
