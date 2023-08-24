@@ -57,7 +57,7 @@ export class LoginComponent {
               this.login.loginStatusSubject.next(true)
               
               //window.location.href = '/user-dashboard'
-              this.router.navigate(['/user-dashboard'])
+              this.router.navigate(['/user'])
 
             } else{
               this.login.logout()

@@ -20,6 +20,7 @@ import { AddQuestionComponent } from './pages/admin/add-question/add-question.co
 import { UpdateQuestionComponent } from './pages/admin/update-question/update-question.component';
 import { UserWelcomeComponent } from './pages/user/user-welcome/user-welcome.component';
 import { UserQuizComponent } from './pages/user/user-quiz/user-quiz.component';
+import { InstructionsComponent } from './pages/user/instructions/instructions.component';
 
 const routes: Routes = [
   {
@@ -86,7 +87,7 @@ const routes: Routes = [
     ]
   },
   {
-    path:"user-dashboard",
+    path:"user",
     component:UserDashboardComponent,
     canActivate: [NormalGuard],
     children:[
@@ -101,6 +102,10 @@ const routes: Routes = [
       {
         path:"quiz/:cid",
         component: UserQuizComponent,
+      },
+      {
+        path:"instructions/:qid",
+        component: InstructionsComponent,
       }
     ]
   }

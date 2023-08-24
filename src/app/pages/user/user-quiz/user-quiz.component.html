@@ -19,9 +19,10 @@
         </mat-card-content>
     
         <mat-card-actions>
-            <button mat-flat-button color="accent">Questions</button>
-            <button mat-flat-button>Max Marks: {{q.maxMarks}}</button>
-            <button mat-flat-button>Number of Questions: {{q.numberOfQuestions}}</button>
+            <button mat-button color="primary">View</button>
+            <button mat-button color="primary" [routerLink]="'/user/instructions/' + q.qid">Start</button>
+            <button mat-flat-button>M.M: {{q.maxMarks}}</button>
+            <button mat-flat-button>Questions: {{q.numberOfQuestions}}</button>
         </mat-card-actions>   
 
     </mat-card>

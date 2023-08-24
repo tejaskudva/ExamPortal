@@ -38,6 +38,7 @@ import { UpdateQuestionComponent } from './pages/admin/update-question/update-qu
 import { UserSidebarComponent } from './pages/user/user-sidebar/user-sidebar.component';
 import { UserWelcomeComponent } from './pages/user/user-welcome/user-welcome.component';
 import { UserQuizComponent } from './pages/user/user-quiz/user-quiz.component';
+import { InstructionsComponent } from './pages/user/instructions/instructions.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { UserQuizComponent } from './pages/user/user-quiz/user-quiz.component';
     UpdateQuestionComponent,
     UserSidebarComponent,
     UserWelcomeComponent,
-    UserQuizComponent
+    UserQuizComponent,
+    InstructionsComponent
   ],
   imports: [
     BrowserModule,
