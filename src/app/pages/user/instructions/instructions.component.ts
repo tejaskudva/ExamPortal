@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuizService } from 'src/app/service/quiz.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-instructions',
@@ -10,9 +11,9 @@ import { QuizService } from 'src/app/service/quiz.service';
 export class InstructionsComponent {
 
   qid: string
-  quiz;
+  quiz
 
-  constructor(private route: ActivatedRoute, private quizservice: QuizService){}
+  constructor(private route: ActivatedRoute, private quizservice: QuizService, private router: Router){}
 
   ngOnInit(): void{
     this.qid = this.route.snapshot.params['qid']
@@ -30,6 +31,22 @@ export class InstructionsComponent {
         console.log(error)
       }
     )
+  }
+
+  startQuiz(){
+    Swal.fire({
+      title: 'Starting Quiz',
+      text: "Are you sure you wish to start the quiz?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, start quiz!'
+    }).then((result) => {
+      if(result.isConfirmed){
+        this.router.navigate(['/start-quiz/'+this.qid])
+      }
+    })
   }
 
 }

@@ -11,8 +11,10 @@ export class QuestionService {
   private getQuestionUrl:string="http://localhost:8080/question/getQuestion";
   private addQuestionUrl:string="http://localhost:8080/question/add";
   private getQuestionByQuiz:string="http://localhost:8080/question/quiz/";
+  private getQuestionByQuizForTest:string="http://localhost:8080/question/quiz/";
   private updateQuestionUrl:string="http://localhost:8080/question/updateQuestion";
   private deleteQuestionUrl:string="http://localhost:8080/question/deleteQuestion/";
+  private submitQuestionsUrl:string="http://localhost:8080/question/submitQuestions";
 
   getQuestions(){
     return this.http.get(`${this.getQuestionUrl}`)
@@ -35,7 +37,15 @@ export class QuestionService {
     return this.http.get(`${this.getQuestionByQuiz}` + qId)
   }
 
+  getQuestionsByQuizForTest(qId: any){
+    return this.http.get(`${this.getQuestionByQuizForTest}` + qId)
+  }
+
   deleteQuestion(id: Number){
     return this.http.delete(`${this.deleteQuestionUrl}${id}`)
+  }
+
+  submitQuestions(questions: any){
+    return this.http.post(`${this.submitQuestionsUrl}`, questions)
   }
 }

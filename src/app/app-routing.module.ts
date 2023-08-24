@@ -21,6 +21,7 @@ import { UpdateQuestionComponent } from './pages/admin/update-question/update-qu
 import { UserWelcomeComponent } from './pages/user/user-welcome/user-welcome.component';
 import { UserQuizComponent } from './pages/user/user-quiz/user-quiz.component';
 import { InstructionsComponent } from './pages/user/instructions/instructions.component';
+import { StartQuizComponent } from './pages/user/start-quiz/start-quiz.component';
 
 const routes: Routes = [
   {
@@ -108,6 +109,11 @@ const routes: Routes = [
         component: InstructionsComponent,
       }
     ]
+  },
+  {
+    path:"start-quiz/:qid",
+    canActivate: [NormalGuard],
+    component: StartQuizComponent,
   }
 ];
 

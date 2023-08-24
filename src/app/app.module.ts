@@ -39,6 +39,8 @@ import { UserSidebarComponent } from './pages/user/user-sidebar/user-sidebar.com
 import { UserWelcomeComponent } from './pages/user/user-welcome/user-welcome.component';
 import { UserQuizComponent } from './pages/user/user-quiz/user-quiz.component';
 import { InstructionsComponent } from './pages/user/instructions/instructions.component';
+import { StartQuizComponent } from './pages/user/start-quiz/start-quiz.component';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,8 @@ import { InstructionsComponent } from './pages/user/instructions/instructions.co
     UserSidebarComponent,
     UserWelcomeComponent,
     UserQuizComponent,
-    InstructionsComponent
+    InstructionsComponent,
+    StartQuizComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +85,8 @@ import { InstructionsComponent } from './pages/user/instructions/instructions.co
     MatListModule,
     MatDividerModule,
     MatSelectModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatRadioModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
