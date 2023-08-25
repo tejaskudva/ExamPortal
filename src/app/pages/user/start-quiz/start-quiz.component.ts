@@ -14,6 +14,8 @@ export class StartQuizComponent implements OnInit {
   qid: string
   questions=[]
   isSubmit=true
+  attempted:Number
+  score: Number
 
   constructor(private locationstrategy: LocationStrategy, private route: ActivatedRoute, private _questionservice: QuestionService){}
 
@@ -58,8 +60,9 @@ export class StartQuizComponent implements OnInit {
       if(result.isConfirmed){
 
         this._questionservice.submitQuestions(this.questions).subscribe(
-          (data: any)=>{
+          (data: Number)=>{
             console.log(data)
+            this.score = data
           },
           error=>{
             console.log(error)
@@ -68,10 +71,18 @@ export class StartQuizComponent implements OnInit {
         )
 
         this.isSubmit=false
+
+        //check attempted questions
+        let unattemptCount = 0
+        for(let q of this.questions){
+          if(q.choice == null){
+            unattemptCount++
+          }
+        }
+
+        this.attempted = this.questions.length - unattemptCount
       }
     })
-
-    
   }
 
 }
