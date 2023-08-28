@@ -1,6 +1,13 @@
+<ngx-ui-loader
+fgsColor="black"
+fgsType="square-loader"
+text="Please wait.."
+pbColor="#FFFFFF"
+[pbThickness]="3"
+></ngx-ui-loader>
 <app-navbar></app-navbar>
 <div class="bootstrap-wrapper">
-  <div class="container-fluid" style="margin-top: 30px;">
+  <div class="container-fluid" style="margin-top: 30px;" ngxUiLoaderBlurred="true">
     <router-outlet></router-outlet>
   </div>
 </div>
