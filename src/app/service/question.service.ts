@@ -11,7 +11,7 @@ export class QuestionService {
   private getQuestionUrl:string="http://localhost:8080/question/getQuestion";
   private addQuestionUrl:string="http://localhost:8080/question/add";
   private getQuestionByQuiz:string="http://localhost:8080/question/quiz/";
-  private getQuestionByQuizForTest:string="http://localhost:8080/question/quiz/";
+  private getQuestionByQuizForTest:string="http://localhost:8080/question/quiz-user/";
   private updateQuestionUrl:string="http://localhost:8080/question/updateQuestion";
   private deleteQuestionUrl:string="http://localhost:8080/question/deleteQuestion/";
   private submitQuestionsUrl:string="http://localhost:8080/question/submitQuestions";
