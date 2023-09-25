@@ -43,6 +43,8 @@ import { StartQuizComponent } from './pages/user/start-quiz/start-quiz.component
 import {MatRadioModule} from '@angular/material/radio';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NgxUiLoaderModule, NgxUiLoaderHttpModule  } from "ngx-ui-loader";
+import {MatTableModule} from '@angular/material/table';
+import { UserRecordComponent } from './pages/user/user-record/user-record.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +71,8 @@ import { NgxUiLoaderModule, NgxUiLoaderHttpModule  } from "ngx-ui-loader";
     UserWelcomeComponent,
     UserQuizComponent,
     InstructionsComponent,
-    StartQuizComponent
+    StartQuizComponent,
+    UserRecordComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +96,8 @@ import { NgxUiLoaderModule, NgxUiLoaderHttpModule  } from "ngx-ui-loader";
     NgxUiLoaderModule,
     NgxUiLoaderHttpModule.forRoot({
       showForeground: true
-    })
+    }),
+    MatTableModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

@@ -2,7 +2,37 @@ import { LocationStrategy } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { QuestionService } from 'src/app/service/question.service';
+import { TestrecordserviceService } from 'src/app/service/testrecordservice.service';
 import Swal from 'sweetalert2';
+
+export class testRecord {
+
+  attempted: Number;
+    marks: Number;
+    quiz: {
+      qid: String
+    };
+    user: {
+      id: String
+    };
+
+  constructor(
+    attempted: Number,
+    marks: Number,
+    quiz: {
+      qid: String
+    },
+    user: {
+      id: String
+    }
+  ){
+    this.attempted = attempted
+    this.marks = marks
+    this.quiz = quiz
+    this.user = user
+  }
+  
+}
 
 @Component({
   selector: 'app-start-quiz',
@@ -16,12 +46,15 @@ export class StartQuizComponent implements OnInit {
   isSubmit=true
   attempted:Number
   score: Number
+  user: any
 
   timer:any
   totalTimer:any
   timeRemaining: any
 
-  constructor(private locationstrategy: LocationStrategy, private route: ActivatedRoute, private _questionservice: QuestionService){}
+
+
+  constructor(private locationstrategy: LocationStrategy, private route: ActivatedRoute, private _questionservice: QuestionService, private _test: TestrecordserviceService){}
 
   ngOnInit(): void {
     this.preventBackButton()
@@ -70,8 +103,46 @@ export class StartQuizComponent implements OnInit {
 
         this._questionservice.submitQuestions(this.questions).subscribe(
           (data: Number)=>{
-            console.log(data)
+            console.log('0: ' + data)
             this.score = data
+            //check attempted questions
+        let unattemptCount = 0
+        for(let q of this.questions){
+          if(q.choice == null){
+            unattemptCount++
+          }
+        }
+
+        this.attempted = this.questions.length - unattemptCount
+
+        this.user = localStorage.getItem('user')
+        let jsonUser = JSON.parse(this.user)
+
+        //setting records
+        console.log('1: ' + this.attempted)
+        console.log('2: ' + this.score)
+        console.log('3: ' + this.qid)
+        console.log('4: ' + jsonUser)
+
+        let quiz = {
+          qid : this.qid
+        }
+
+        let user = {
+          id : jsonUser.id
+        }
+
+        let test = new testRecord(this.attempted, this.score, quiz, user);
+        console.log(test)
+
+        this._test.addTests(test).subscribe(
+          (data: any)=>{
+
+          },
+          error=>{
+            console.log(error)
+          }
+        )
           },
           error=>{
             console.log(error)
@@ -81,15 +152,7 @@ export class StartQuizComponent implements OnInit {
 
         this.isSubmit=false
 
-        //check attempted questions
-        let unattemptCount = 0
-        for(let q of this.questions){
-          if(q.choice == null){
-            unattemptCount++
-          }
-        }
-
-        this.attempted = this.questions.length - unattemptCount
+        
       }
     })
   }

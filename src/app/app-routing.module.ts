@@ -21,7 +21,8 @@ import { UpdateQuestionComponent } from './pages/admin/update-question/update-qu
 import { UserWelcomeComponent } from './pages/user/user-welcome/user-welcome.component';
 import { UserQuizComponent } from './pages/user/user-quiz/user-quiz.component';
 import { InstructionsComponent } from './pages/user/instructions/instructions.component';
-import { StartQuizComponent } from './pages/user/start-quiz/start-quiz.component';
+import { StartQuizComponent, testRecord } from './pages/user/start-quiz/start-quiz.component';
+import { UserRecordComponent } from './pages/user/user-record/user-record.component';
 
 const routes: Routes = [
   {
@@ -107,7 +108,11 @@ const routes: Routes = [
       {
         path:"instructions/:qid",
         component: InstructionsComponent,
-      }
+      },
+      {
+        path:"record",
+        component: UserRecordComponent,
+      }      
     ]
   },
   {
