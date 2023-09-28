@@ -11,6 +11,7 @@ export class LoginserviceService {
 
   private tokenUrl:string="http://localhost:8080/auth/login";
   private currrentUserUrl:string="http://localhost:8080/auth/currentUser";
+  private downloadUrl:string="http://localhost:8080/user/download/";
 
   constructor(private http:HttpClient) {}
 
@@ -72,6 +73,11 @@ export class LoginserviceService {
     public getUserRole(){
       let user = this.getUser()
       return user.authorities[0].authority
+    }
+
+    //get profile image
+    public getUserProfile(id: Number){
+      return this.http.get(`${this.downloadUrl}`+id)
     }
 
 }

@@ -7,9 +7,13 @@
             <div class="container">
 
                 <div class="container text-center">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png" alt="" width="200px" height="200px">
+                    <img data-ot-ignore [src]= "transform()" width="200px" height="200px"/>
                     <h2 style="margin-top: 20px;">{{user.firstName}} {{user.lastName}}</h2>
                 </div>
+
+                <div style="text-align: center;">
+                    <app-image-upload></app-image-upload>
+                </div><br>
 
                 <div class="row">
 

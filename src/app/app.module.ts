@@ -45,6 +45,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NgxUiLoaderModule, NgxUiLoaderHttpModule  } from "ngx-ui-loader";
 import {MatTableModule} from '@angular/material/table';
 import { UserRecordComponent } from './pages/user/user-record/user-record.component';
+import { ImageUploadComponent } from './components/image-upload/image-upload.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +73,8 @@ import { UserRecordComponent } from './pages/user/user-record/user-record.compon
     UserQuizComponent,
     InstructionsComponent,
     StartQuizComponent,
-    UserRecordComponent
+    UserRecordComponent,
+    ImageUploadComponent
   ],
   imports: [
     BrowserModule,
